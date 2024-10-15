@@ -15,7 +15,8 @@ int credits;
 string *courses;
 
 public:
-
+Student();
+~Student();
 
 };
 
