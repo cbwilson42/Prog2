@@ -11,13 +11,16 @@ private:
 string firstName;
 string lastName;
 string major;
-int credits;
+double gpa;
 string *courses;
 
 public:
 Student();
 ~Student();
-
+void removeStudent();
+void addStudent();
 };
+
+Student::
 
 #endif
