@@ -1,13 +1,13 @@
 #include <string>
-#include "smartPointer.h"
+#include "listNode.h"
 #include "iostream"
 using namespace std;
 
-int main() {
+int main() 
+{
 
     int IDNumber;
     string name;
-    string sex;
     double gpa;
     string major;
     string answer;
@@ -23,15 +23,6 @@ int main() {
         cout << "Enter Name " << endl;
         getline (cin, name);
         // used getline to allow for space in name
-
-        cout << "Enter Student Number " << endl;
-        // used cin because ID Number is an integer.  had to add cin.ignore to input Sex
-        cin >> IDNumber; 
-        cin.ignore();
-    
-        cout << "Enter Sex " << endl;
-        getline (cin, sex);
-    
     
         cout << "Enter GPA " << endl;
         // used cin because gpa is a float.  again needed cin.ignore
@@ -41,13 +32,14 @@ int main() {
         cout << "Enter major " << endl;
         getline(cin, major);
 
-        sr.addStudent(Student (name, IDNumber ,sex ,gpa ,major ));
+        sr.addStudent(Student (name, gpa ,major ));
         i++;
 
         cout << "Do you want to enter another student?";
         cin >> answer;
         cin.ignore();
-        if (answer == "no" ){
+        if (answer == "no" )
+        {
             i = 100;
         }
 
