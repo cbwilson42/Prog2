@@ -5,8 +5,6 @@ using namespace std;
 
 int main() 
 {
-
-    int IDNumber;
     string name;
     double gpa;
     string major;
