@@ -12,10 +12,10 @@ string firstName;
 string lastName;
 string major;
 double gpa;
-int courses;
+int *courses;
 
 public:
-Student(string, string, string, double, int);
+Student(string, string, string, double, int*);
 ~Student();
 string getfirstName()const;
 string setfirstName(string);
@@ -26,8 +26,9 @@ string setmajor(string);
 double getgpa()const;
 double setgpa(double);
 int getcourses()const;
-int setcourses(int);
-}
+int setcourses(int*);
+};
+
 #endif
 /*string Student::getfirstName()const
 {

@@ -1,4 +1,5 @@
 #include "Student.h"
+using namespace std;
 
 string Student::getfirstName()const
 {
@@ -42,16 +43,16 @@ double Student::setgpa(double g)
 
 int Student::getcourses()const
 {
-    return courses;
+    return *courses;
 }
 
-int Student::setcourses(int c)
+int Student::setcourses(int *c)
 {
     courses = c;
 }
 
 //Constuctor
-Student::Student(string fn, string ln, string m, double g, int c)
+Student::Student(string fn, string ln, string m, double g, int *c)
 {
     firstName = fn;
     lastName = ln;
@@ -62,5 +63,5 @@ Student::Student(string fn, string ln, string m, double g, int c)
 
 Student::~Student()
 {
-
+    delete[] courses;
 }
