@@ -15,12 +15,27 @@ double gpa;
 string *courses;
 
 public:
-Student();
+Student(string, string, string, double, string*);
 ~Student();
-void removeStudent();
-void addStudent();
+
 };
 
-Student::
+//Constuctor
+Student::Student(string fn, string ln, string m, double g, string *c)
+{
+    firstName = fn;
+    lastName = ln;
+    major = m;
+    gpa = g;
+    courses = new string[];
+
+
+}
+string Student::getfirstName( int f) const
+{
+    return firstName;
+}
+
+
 
 #endif
