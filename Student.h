@@ -12,10 +12,10 @@ string firstName;
 string lastName;
 string major;
 double gpa;
-string *courses;
+int courses;
 
 public:
-Student(string, string, string, double, string*);
+Student(string, string, string, double, int);
 ~Student();
 
 string Student::getfirstName()const
@@ -58,28 +58,26 @@ double Student::setgpa(double g)
     gpa = g;
 }
 
-string Student::getcourses()const
+int Student::getcourses()const
 {
-    return *courses;
+    return courses;
 }
 
-string Student::setcourses(string *c)
+string Student::setcourses(int c)
 {
-    *courses = *c;
+    courses = c;
 }
 
 };
 
 //Constuctor
-Student::Student(string fn, string ln, string m, double g, string *c)
+Student::Student(string fn, string ln, string m, double g, int c)
 {
     firstName = fn;
     lastName = ln;
     major = m;
     gpa = g;
-    courses = new string[];
-
-
+    courses = c;
 }
 
 
