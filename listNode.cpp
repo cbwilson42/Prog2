@@ -23,7 +23,7 @@ int main()
         // used getline to allow for space in name
     
         cout << "Enter GPA " << endl;
-        // used cin because gpa is a float.  again needed cin.ignore
+        // used cin because gpa is a float
         cin >> gpa;
         cin.ignore();
 

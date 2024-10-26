@@ -14,12 +14,12 @@ public:
     Student(const string name, double gpa, string major)
         : name(name), gpa(gpa), major(major){}
 
-    // Getters (also known as accessors, as they access the private values)
+    // Getters
     string getName() const { return name;}
     double getgpa() const { return gpa; }
     string getmajor() const {return major; }
 
-    // Destructor (free memory)
+    // Destructor
     ~Student() {}
 };
 
