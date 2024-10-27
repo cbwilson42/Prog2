@@ -61,7 +61,31 @@ Student::Student(string fn, string ln, string m, double g, int *c)
     courses = c;
 }
 
+//Destructor
 Student::~Student()
 {
     delete[] courses;
 }
+
+//Operator comparison
+bool Student::operator == (const Student& s)
+{
+    return gpa == s.gpa;
+}
+
+bool Student::operator < (const Student& s)
+{
+    return gpa < s.gpa;
+}
+
+bool Student::operator > (const Student& s)
+{
+    return gpa < s.gpa;
+}
+
+
+ostream& operator<<(ostream &strm, Student &s)
+	{
+		strm << s.firstName << "#" << s.lastName << "#" << s.major << "#" << s.gpa << "#" << s.courses << "#";
+		return strm;
+	}
