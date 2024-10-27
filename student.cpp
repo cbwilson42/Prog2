@@ -80,11 +80,10 @@ bool Student::operator < (const Student& s)
 
 bool Student::operator > (const Student& s)
 {
-    return gpa < s.gpa;
+    return gpa > s.gpa;
 }
 
-
-ostream& operator<<(ostream &strm, Student &s)
+ostream& operator<<(ostream& strm, Student& s)
 	{
 		strm << s.firstName << "#" << s.lastName << "#" << s.major << "#" << s.gpa << "#" << s.courses << "#";
 		return strm;
