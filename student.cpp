@@ -70,17 +70,29 @@ Student::~Student()
 //Operator comparison
 bool Student::operator == (const Student& s)
 {
-    return gpa == s.gpa;
+    if(gpa == s.gpa)
+        return true;
+    else
+        return false;
+    //return gpa == s.gpa;
 }
 
 bool Student::operator < (const Student& s)
 {
-    return gpa < s.gpa;
+     if(gpa < s.gpa)
+        return true;
+    else
+        return false;
+    //return gpa < s.gpa;
 }
 
 bool Student::operator > (const Student& s)
 {
-    return gpa > s.gpa;
+     if(gpa > s.gpa)
+        return true;
+    else
+        return false;
+    //return gpa > s.gpa;
 }
 
 ostream& operator<<(ostream& strm, Student& s)
