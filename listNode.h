@@ -15,7 +15,7 @@ public:
         : name(name), gpa(gpa), major(major){}
 
     // Getters
-    string getName() const { return name;}
+    string getName() const { return name; }
     double getgpa() const { return gpa; }
     string getmajor() const {return major; }
 
