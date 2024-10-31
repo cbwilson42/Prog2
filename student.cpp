@@ -105,6 +105,6 @@ bool Student::operator > (const Student& s)
 
 ostream& operator<<(ostream& os, Student& s)
 	{
-		os << s.firstName << "#" << s.lastName << "#" << s.major << "#" << s.gpa << "#" << *s.courses << "#";
+		os << s.firstName << " " << s.lastName << " " << s.major << " " << s.gpa << " " << *s.courses << " ";
 		return os;
 	}
