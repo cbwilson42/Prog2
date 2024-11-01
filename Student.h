@@ -15,7 +15,7 @@ class Student
         int *courses;
 
     public:
-        Student(string, string, string, double, int*);
+        Student(string, string, string, double, int*, int);
         ~Student();
         string getfirstName()const;
         void setfirstName(string);
