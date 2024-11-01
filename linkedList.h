@@ -21,7 +21,7 @@ public:
     void append(const Student& s);
     void display() const;
     void sortByGPA();
-    void removeByName(string& firstName, string& lastName);
+    void removeByName(string, string);
     int getSize() const;
 
     friend ostream& operator<<(ostream& os, const LinkedList& list);
@@ -43,15 +43,17 @@ LinkedList::~LinkedList() {
 // Append a new node with student data to the end of the list
 void LinkedList::append(const Student& s) {
     ListNode<Student>* newNode = new ListNode<Student>(s);
-    if (!head) {
-        head = tail = newNode;
+
+    if (!head) {  // If the list is empty
+        head = newNode;
+        tail = newNode;
     } else {
         tail->next = newNode;
         newNode->prev = tail;
-        tail = newNode;
+        tail = newNode;  // Update tail to the new node
     }
-    size++;
 }
+
 
 // Display all students in the list
 void LinkedList::display() const {
@@ -100,7 +102,7 @@ void LinkedList::sortByGPA()
 
 
 // Remove a student by name
-void LinkedList::removeByName(string& firstName, string& lastName) 
+void LinkedList::removeByName(string firstName, string lastName) 
 {
     ListNode<Student>* current = head;
 
@@ -130,7 +132,11 @@ void LinkedList::removeByName(string& firstName, string& lastName)
         }
         current = current->next;  // Move to the next node if no match
     }
+
+    // Optional: Node not found
+    cout << "Node not found with name: " << firstName << " " << lastName << "\n";
 }
+
 
 
 
