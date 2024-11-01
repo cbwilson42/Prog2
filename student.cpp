@@ -1,14 +1,8 @@
 #include "Student.h"
 using namespace std;
 
-Student::Student(string fn, string ln, string m, double g, int* c, int numCourses)
-    : firstName(fn), lastName(ln), major(m), gpa(g), numCourses(numCourses) 
-{
-    courses = new int[numCourses];
-    for (int i = 0; i < numCourses; ++i) {
-        courses[i] = c[i];
-    }
-}
+Student::Student(string fn, string ln, string m, double g, int* c)
+    : firstName(fn), lastName(ln), major(m), gpa(g), courses(c) {}
 
 // Destructor to delete the dynamically allocated `courses` array
 Student::~Student() {
@@ -57,7 +51,7 @@ void Student::setgpa(double g)
 
 int Student::getcourses()const
 {
-    return numCourses;
+    return *courses;
 }
 
 void Student::setcourses(int *c)
@@ -109,14 +103,8 @@ bool Student::operator > (const Student& s)
     //return gpa > s.gpa;
 }
 
-ostream& operator<<(ostream& os, Student& s) {
-    os << "Name: " << s.firstName << " " << s.lastName
-       << "\nMajor: " << s.major
-       << "\nGPA: " << s.gpa
-       << "\nCourses: ";
-    
-    for (int i = 0; i < s.numCourses; ++i) {
-        os << s.courses[i] << " ";
-    }
-    return os;
-}
+ostream& operator<<(ostream& os, Student& s)
+	{
+		os << "Name: " << s.firstName << " " << s.lastName << "\nMajor: " << s.major << "\nGPA:" << s.gpa << "\nCourses:" << *s.courses;
+		return os;
+	}
