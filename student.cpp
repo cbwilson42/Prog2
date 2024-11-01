@@ -3,7 +3,12 @@ using namespace std;
 
 Student::Student(string fn, string ln, string m, double g, int* c)
     : firstName(fn), lastName(ln), major(m), gpa(g), courses(c) {}
-
+{
+    courses = new int[numCourses];
+    for (int i = 0; i < numCourses; ++i) {
+        courses[i] = c[i];
+    }
+}
 // Destructor to delete the dynamically allocated `courses` array
 Student::~Student() {
     delete[] courses;

@@ -114,12 +114,14 @@ void LinkedList::removeByName(string firstName, string lastName)
             // Case 1: Node is the head
             if (current == head) {
                 head = current->next;
-                if (head) head->prev = nullptr;  // Update the new head's prev pointer
+                if (head) 
+                    head->prev = nullptr;  // Update the new head's prev pointer
             } 
             // Case 2: Node is the tail
             else if (current == tail) {
                 tail = current->prev;
-                if (tail) tail->next = nullptr;  // Update the new tail's next pointer
+                if (tail) 
+                    tail->next = nullptr;  // Update the new tail's next pointer
             } 
             // Case 3: Node is in the middle
             else {
@@ -128,7 +130,6 @@ void LinkedList::removeByName(string firstName, string lastName)
             }
 
             delete current;  // Delete the target node
-            return;  // Exit after deleting the node
         }
         current = current->next;  // Move to the next node if no match
     }

@@ -42,41 +42,59 @@ int main() {
     LinkedList studentList;
     populateStudentList(studentList);  // Add predefined students to the list
 
-    bool running = true;
-    while (running) {
+    int choice;
+
+    do {
         displayMenu();
-        int choice;
         cin >> choice;
 
-        switch (choice) {
-            case 1:
-                // Display all students
-                cout << "\nAll Students:\n";
-                studentList.display();
-                break;
-            case 2:
-                // Sort students by GPA
-                cout << "Students sorted by GPA (lowest to highest).\n";
-                studentList.sortByGPA();
-                studentList.display();
-                break;
-            case 3: {
-                // Remove student by name
-                string firstName, lastName;
-                cout << "Enter first name of student to remove: ";
-                cin >> firstName;
-                cout << "Enter last name of student to remove: ";
-                cin >> lastName;
-                studentList.removeByName(firstName, lastName);
-                break;
-            }
-            case 4:
-                running = false;
-                break;
-            default:
-                cout << "Invalid choice, please try again.\n";
+        if(choice == 1)
+        {
+            // Display all students
+            cout << "\nAll Students:\n";
+            studentList.display();
         }
-    }
+        else if(choice == 2)
+        {
+            cout << "Students sorted by GPA (lowest to highest).\n";
+            studentList.sortByGPA();
+            studentList.display();
+        }
+        else if(choice == 3)
+        {
+            string firstName, lastName;
+            cout << "Enter first name of student to remove: ";
+            cin >> firstName;
+            cout << "Enter last name of student to remove: ";
+            cin >> lastName;
+            studentList.removeByName(firstName, lastName);
+        }
+    }while(choice != 4);
+
+    //     switch (choice) {
+    //         case 1:
+    //             // Display all students
+    //             cout << "\nAll Students:\n";
+    //             studentList.display();
+    //             break;
+    //         case 2:
+    //             // Sort students by GPA
+    //             cout << "Students sorted by GPA (lowest to highest).\n";
+    //             studentList.sortByGPA();
+    //             studentList.display();
+    //             break;
+    //         case 3: {
+    //             // Remove student by name
+    //             string firstName, lastName;
+    //             cout << "Enter first name of student to remove: ";
+    //             cin >> firstName;
+    //             cout << "Enter last name of student to remove: ";
+    //             cin >> lastName;
+    //             studentList.removeByName(firstName, lastName);
+    //             break;
+    //         }
+    //     }
+    // }while(choice != 4);
 
     return 0;
 }
