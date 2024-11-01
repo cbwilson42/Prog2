@@ -21,7 +21,7 @@ public:
     void append(const Student& s);
     void display() const;
     void sortByGPA();
-    void removeByName(const string& firstName, const string& lastName);
+    void removeByName(string& firstName, string& lastName);
     int getSize() const;
 
     friend ostream& operator<<(ostream& os, const LinkedList& list);
@@ -62,41 +62,77 @@ void LinkedList::display() const {
     }
 }
 
-// Sort the list by GPA in descending order (highest GPA first)
-void LinkedList::sortByGPA() {
-    if (!head || !head->next) return;
+void LinkedList::sortByGPA()
+{
+    ListNode<Student>* sorted = nullptr;
+    ListNode<Student>* current = head;
 
-    for (ListNode<Student>* i = head; i != nullptr; i = i->next) {
-        for (ListNode<Student>* j = i->next; j != nullptr; j = j->next) {
-            if (i->data.getgpa() < j->data.getgpa()) {
-                swap(i->data, j->data);
+    while (current != nullptr) 
+    {
+        ListNode<Student>* next = current->next;
+        current->prev = nullptr; // Reset previous pointer for each node
+
+        if (!sorted || sorted->data.getgpa() >= current->data.getgpa()) 
+        {
+            current->next = sorted;
+            if (sorted) sorted->prev = current;
+            sorted = current;
+        } 
+        else 
+        {
+            ListNode<Student>* temp = sorted;
+            while (temp->next && temp->next->data.getgpa() < current->data.getgpa()) {
+                temp = temp->next;
             }
+            current->next = temp->next;
+            if (temp->next) temp->next->prev = current;
+            temp->next = current;
+            current->prev = temp;
         }
+
+        current = next;
     }
-}
+
+    head = sorted;
+    tail = head;
+    while (tail && tail->next) tail = tail->next; // Ensure tail is updated
+} 
+
 
 // Remove a student by name
-void LinkedList::removeByName(const string& firstName, const string& lastName) {
+void LinkedList::removeByName(string& firstName, string& lastName) 
+{
     ListNode<Student>* current = head;
-    while (current) {
-        if (current->data.getfirstName() == firstName && current->data.getlastName() == lastName) {
+
+    // Traverse to find the target node
+    while (current) 
+    {
+        if (current->data.getfirstName() == firstName && current->data.getlastName() == lastName) 
+        {
+            // Case 1: Node is the head
             if (current == head) {
-                head = head->next;
-                if (head) head->prev = nullptr;
-            } else if (current == tail) {
-                tail = tail->prev;
-                if (tail) tail->next = nullptr;
-            } else {
+                head = current->next;
+                if (head) head->prev = nullptr;  // Update the new head's prev pointer
+            } 
+            // Case 2: Node is the tail
+            else if (current == tail) {
+                tail = current->prev;
+                if (tail) tail->next = nullptr;  // Update the new tail's next pointer
+            } 
+            // Case 3: Node is in the middle
+            else {
                 current->prev->next = current->next;
                 current->next->prev = current->prev;
             }
-            delete current;
-            size--;
-            return;
+
+            delete current;  // Delete the target node
+            return;  // Exit after deleting the node
         }
-        current = current->next;
+        current = current->next;  // Move to the next node if no match
     }
 }
+
+
 
 // Get the size of the list
 int LinkedList::getSize() const {

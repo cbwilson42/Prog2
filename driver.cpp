@@ -56,8 +56,9 @@ int main() {
                 break;
             case 2:
                 // Sort students by GPA
+                cout << "Students sorted by GPA (lowest to highest).\n";
                 studentList.sortByGPA();
-                cout << "Students sorted by GPA (highest to lowest).\n";
+                studentList.display();
                 break;
             case 3: {
                 // Remove student by name
@@ -67,7 +68,6 @@ int main() {
                 cout << "Enter last name of student to remove: ";
                 cin >> lastName;
                 studentList.removeByName(firstName, lastName);
-                cout << "Student removed successfully!\n";
                 break;
             }
             case 4:
