@@ -12,10 +12,11 @@ class Student
         string lastName;
         string major;
         double gpa;
+        int numCourses;
         int *courses;
 
     public:
-        Student(string, string, string, double, int*, int);
+        Student(string fn, string ln, string m, double g, int* c, int numCourses);  // Updated declaration
         ~Student();
         string getfirstName()const;
         void setfirstName(string);
