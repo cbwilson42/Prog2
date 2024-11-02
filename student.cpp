@@ -2,13 +2,17 @@
 using namespace std;
 
 Student::Student(string fn, string ln, string m, double g, int* c)
-    : firstName(fn), lastName(ln), major(m), gpa(g), courses(c) {}
+    : firstName(fn), lastName(ln), major(m), gpa(g), courses(c) { 
+        courses = new int[1]; // Adjust size as needed
+        courses[0] = c[0];
+        }
 
 // Destructor to delete the dynamically allocated `courses` array
 Student::~Student() {
     delete[] courses;
 }
 
+//Getters and Setters
 string Student::getfirstName()const
 {
     return firstName;
@@ -59,21 +63,7 @@ void Student::setcourses(int *c)
     courses = c;
 }
 
-//Constuctor
-/*Student::Student(string fn, string ln, string m, double g, int *c)
-{
-    firstName = fn;
-    lastName = ln;
-    major = m;
-    gpa = g;
-    courses = c;
-}
 
-//Destructor
-Student::~Student()
-{
-    delete[] courses;
-}*/
 
 //Operator comparison
 bool Student::operator == (const Student& s)
@@ -103,6 +93,7 @@ bool Student::operator > (const Student& s)
     //return gpa > s.gpa;
 }
 
+//Friend Operator
 ostream& operator<<(ostream& os, Student& s)
 	{
 		os << "Name: " << s.firstName << " " << s.lastName << "\nMajor: " << s.major << "\nGPA:" << s.gpa << "\nCourses:" << *s.courses;

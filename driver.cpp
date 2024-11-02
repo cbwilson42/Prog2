@@ -34,11 +34,32 @@ void displayMenu() {
     cout << "1. Display All Students\n";
     cout << "2. Sort Students by GPA\n";
     cout << "3. Remove Student by Name\n";
-    cout << "4. Exit\n";
+    cout << "4. Add student by Name\n";
+    cout << "5. Exit\n";
     cout << "Choose an option: ";
 }
 
+void addNewStudent(LinkedList& studentList)
+{
+    string firstName, lastName, major;
+    double gpa;
+    int numCourses;
+
+    cout << "Enter first name: ";
+    cin >> firstName;
+    cout << "Enter last name: ";
+    cin >> lastName;
+    cout << "Enter major: ";
+    cin >> major;
+    cout << "Enter GPA: ";
+    cin >> gpa;
+    cout << "Enter the number of courses: ";
+    cin >> numCourses;
+}
+
 int main() {
+
+    
     LinkedList studentList;
     populateStudentList(studentList);  // Add predefined students to the list
 
@@ -46,6 +67,7 @@ int main() {
 
     do {
         displayMenu();
+        
         cin >> choice;
 
         if(choice == 1)
@@ -69,32 +91,19 @@ int main() {
             cin >> lastName;
             studentList.removeByName(firstName, lastName);
         }
-    }while(choice != 4);
+        else if (choice == 4)
+        {
+            //Add a new student by name
+            addNewStudent(studentList);
+        }
+        else if (choice != 5)
+        {
+            cout << "Invalid choice. Please try again.\n";
+        }
+    }while(choice != 5);
 
-    //     switch (choice) {
-    //         case 1:
-    //             // Display all students
-    //             cout << "\nAll Students:\n";
-    //             studentList.display();
-    //             break;
-    //         case 2:
-    //             // Sort students by GPA
-    //             cout << "Students sorted by GPA (lowest to highest).\n";
-    //             studentList.sortByGPA();
-    //             studentList.display();
-    //             break;
-    //         case 3: {
-    //             // Remove student by name
-    //             string firstName, lastName;
-    //             cout << "Enter first name of student to remove: ";
-    //             cin >> firstName;
-    //             cout << "Enter last name of student to remove: ";
-    //             cin >> lastName;
-    //             studentList.removeByName(firstName, lastName);
-    //             break;
-    //         }
-    //     }
-    // }while(choice != 4);
+    cout << "Exiting the program.\n";
 
+    
     return 0;
 }

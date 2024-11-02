@@ -23,7 +23,8 @@ public:
     void sortByGPA();
     void removeByName(string, string);
     int getSize() const;
-
+    void addByName(const Student& s);
+    
     friend ostream& operator<<(ostream& os, const LinkedList& list);
 };
 
@@ -126,19 +127,66 @@ void LinkedList::removeByName(string firstName, string lastName)
             // Case 3: Node is in the middle
             else {
                 current->prev->next = current->next;
+                if(current->next)
                 current->next->prev = current->prev;
             }
 
             delete current;  // Delete the target node
+            size--;
+            //return;
+            
         }
         current = current->next;  // Move to the next node if no match
+        
+        return;
     }
 
     // Optional: Node not found
     cout << "Node not found with name: " << firstName << " " << lastName << "\n";
+    
+    return;
 }
 
+void LinkedList::addByName(const Student& s)
+{
+    ListNode<Student>* newNode = new ListNode<Student>(s);
 
+    if(!head)
+    {
+        head = newNode;
+        tail = newNode;
+        size++;
+        return;
+    }
+
+    ListNode<Student>* current = head;
+    while (current && (current->data.getlastName() < s.getlastName() || (current->data.getlastName() == s.getlastName() && current->data.getfirstName() < s.getfirstName())))
+    {
+        current = current->next;
+    }
+
+    if(current == head)
+    {
+        newNode->next = head;
+        head->prev = newNode;
+        head = newNode;
+    }
+    else if (!current)
+    {
+        tail->next = newNode;
+        newNode->prev = tail;
+        tail = newNode;
+    }
+    else
+    {
+        newNode->next = current;
+        newNode->prev = current->prev;
+        current->prev->next = newNode;
+        current->prev = newNode;
+    }
+
+    size++;
+}
 
 
 // Get the size of the list
@@ -155,5 +203,7 @@ ostream& operator<<(ostream& os, const LinkedList& list) {
     }
     return os;
 }
+
+
 
 #endif

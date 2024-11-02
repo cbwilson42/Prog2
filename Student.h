@@ -7,7 +7,7 @@ using namespace std;
 class Student
 {
     private:
-
+        //Members
         string firstName;
         string lastName;
         string major;
@@ -15,6 +15,7 @@ class Student
         int *courses;
 
     public:
+        //Functions
         Student(string, string, string, double, int*);  // Updated declaration
         ~Student();
         string getfirstName()const;
